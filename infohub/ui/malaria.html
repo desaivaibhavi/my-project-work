@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title> Malaria </title>
+</head>
+<body>
+    <p>Here the posts would be shown as a list</p>
+    {% for post in all_posts %}
+    <li><a href="/view_post/?key={{post.id}}">{{post.title_post}}</a><button type="button" onclick="window.location.href='/edit_post_page/?key={{post.id}}'">Edit</button>
+<button type="button" onclick="window.location.href='/delete_post/?postid={{post.id}}'">Delete</button>
+    </li>
+    {% endfor %}
+    <button type="button" onclick="window.location.href='/post_form/'">New Post</button>
+
+    
+</body>
+</html>

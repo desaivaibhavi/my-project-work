@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>User Profile | Name</title>
+    </head>
+    <body>
+<!--        contiue from here -->
+        <form action="/edit_profile/?id={{profiler.id}}" method="post">
+        <p>User Name : <input type="text" name="user" value="{{profiler.user}}"></p>
+        <p>First Name : <input type="text" name="user" value="{{profiler.first_name}}"></p>
+        <p>Last Name : <input type="text" name="user" value="{{profiler.last_name}}"></p>
+        <p>Email Address : yet to be added in database</p>
+        <p>Contact : <input type="text" name="user" value="{{profiler.phone}}"></p>
+        <p>Gender : <input type="text" name="user" value="{{profiler.gender}}"></p>
+        <p>Location :<input type="text" name="user" value="{{profiler.location}}"></p>
+        <button type="button" onclick="window.location.href='/">Update Profile</button>
+        <a href="/#">Cancel</a>
+        </form>
+    </body>
+</html>
