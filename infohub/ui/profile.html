@@ -3,6 +3,8 @@
         <title>User Profile | Name</title>
     </head>
     <body>
+        {% include "header.html" %}
+        <br><br><br><br><br><br>
         <p>User Name : {{profiler.user}}</p>
         <p>First Name : {{profiler.first_name}}</p>
         <p>Last Name : {{profiler.last_name}}</p>
@@ -11,5 +13,8 @@
         <p>Gender : {{profiler.gender}}</p>
         <p>Location :{{profiler.location}} </p>
         <button type="button" onclick="window.location.href='/edit_profile_page/?id={{profiler.id}}'">Edit Profile</button>
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        {% include "footer.html" %}
     </body>
 </html>

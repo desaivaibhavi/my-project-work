@@ -3,6 +3,8 @@
 	<title> Malaria </title>
 </head>
 <body>
+    {% include "header.html" %}
+    <br><br><br><br><br><br>
     <p>Here the posts would be shown as a list</p>
     {% for post in all_posts %}
     <li><a href="/view_post/?key={{post.id}}">{{post.title_post}}</a><button type="button" onclick="window.location.href='/edit_post_page/?key={{post.id}}'">Edit</button>
@@ -10,7 +12,8 @@
     </li>
     {% endfor %}
     <button type="button" onclick="window.location.href='/post_form/'">New Post</button>
-
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    {% include "footer.html" %}
     
 </body>
 </html>
