@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
+from django.db import IntegrityError
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.contrib import auth
@@ -196,16 +197,23 @@ def edit_profile(request):
     if not request.user.is_authenticated():
         return HttpResponse(jinja_environ.get_template('index.html').render({"pcuser":None}))
 
-    #Check if user has an associated rider
-    #(This will be false if the admin logs in)
-    
-    try:
-        request.user.pcuser
-    except:
-        return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":None,
-                                                                              "text":'<p>No Rider associated!.</p><p>Please go back or click OK to go to the homepage</p>', "link":'/'}))
     
     
+    
+    request.user.pcuser.gender = request.REQUEST['gender']
+    request.user.pcuser.phone = request.REQUEST['phone']
+    request.user.pcuser.gender = request.REQUEST['location']
+    request.user.username = request.REQUEST['user']
+    request.user.first_name = request.REQUEST['first_name']
+    request.user.last_name = request.REQUEST['last_name']
+    
+    request.user.pcuser.save()
+    
+    request.user.save()
+    
+    return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
+                                                                          "text":'Profile edit successful. Please go back or click OK to go to the homepage',"link":'/'}))
+
     
 def peacetrack(request):
     return HttpResponse(jinja_environ.get_template('peacetrack.html').render({"pcuser":None}))
