@@ -1,20 +1,43 @@
 <html>
     <head>
-        <title>User Profile | Name</title>
+        <title>User Profile | {{profiler.first_name}}</title>
     </head>
     <body>
         {% include "header.html" %}
         <br><br><br><br><br><br>
-        <p>User Name : {{profiler.user}}</p>
-        <p>First Name : {{profiler.first_name}}</p>
-        <p>Last Name : {{profiler.last_name}}</p>
-        <p>Email Address : yet to be added in database</p>
-        <p>Contact : {{profiler.phone}} </p>
-        <p>Gender : {{profiler.gender}}</p>
-        <p>Location :{{profiler.location}} </p>
-        <button type="button" onclick="window.location.href='/edit_profile_page/?id={{profiler.id}}'">Edit Profile</button>
         
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div style="width:600px; height:400px; margin:0 auto; background-color:#0d8b97;">
+        <br>
+        <center><b><h3><font color="white">User Profile</font></h3></b></center>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-6">
+                <font color="white"><br>
+                <h4><b>First Name    :</b>  {{profiler.first_name}}</h4>
+                <h4><b>Last Name     :</b>  {{profiler.last_name}}</h4>
+                <h4><b>Email Address :</b>  yet to be added</h4>
+                <h4><b>Contact       :</b>  {{profiler.phone}} </h4>
+                <h4><b>Gender        :</b>  {{profiler.gender}}</h4>
+                <h4><b>Location      :</b>  {{profiler.location}} </h4></font>
+                
+            </div>
+            <div class="col-md-4">
+                <figure>
+                    <img src="http://i.imgur.com/dnjclWV.png" class="img-responsive" style="width:350px; height:180px; border:2px solid #2c0f00;">
+                    <figcaption style="background-color: #2c0f00; padding-top:1px; padding-bottom:1px;"><center><font color="#e2d7bb"><b><h4>User {{profiler.user}}</h4></b></font></center></figcaption>
+                </figure>
+            </div>
+            
+            <div class="col-md-1">
+            </div>
+        </div><br>
+        <center><button class="btn" type="button" onclick="window.location.href='/edit_profile_page/?id={{profiler.id}}'">Edit Profile</button></center>
+        
+        
+        </div>
+        <br><br>
         {% include "footer.html" %}
     </body>
 </html>

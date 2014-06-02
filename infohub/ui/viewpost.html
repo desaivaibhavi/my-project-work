@@ -5,17 +5,47 @@
     <body>
         {% include "header.html" %}
         <br><br><br><br><br><br>
-        <p>Malaria : infoHub</p>
+               
+        <center><h2><font color="#2c0f00"> Malaria : infoHub</font> </h2></center>
         
-        <p>Title</p>
-        <p>{{post.title_post}}</p>
-        
-        <p>Descrpition</p>
-        <p>{{post.description_post}}</p>
+        <div style="width:600px; height:300px; margin:0 auto; background-color:#0d8b97;">
+        <br>
+        <center><b><h3><font color="white">View Post</font></h3></b></center>
+        <br>
+            
+            
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+             <div class="col-md-5">
+                    <p><font color="white"><h4>Title : </h4></font></p>
+            </div>
+            <div class="col-md-6">
+                    <p><font color="white"><h4>{{post.title_post}}</h4></font></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-5">
+                    <p><font color="white"><h4>Descrpition : </h4></font></p>
+            </div>
+            <div class="col-md-6">
+                    <p><font color="white"><h4>{{post.description_post}}</h4></font></p>
+            </div>
+        </div><br>
+        <center>
+        <button class="btn" type="button" onclick="window.location.href='/edit_post_page/?key={{post.id}}'">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn" type="button" onclick="window.location.href='/delete_post/?postid={{post.id}}'">Delete</button>
+        </center>    
+            
+        <br>
+        </div>
         
         
 
-     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+     <br><br>
     {% include "footer.html" %}   
     </body>
 </html>
