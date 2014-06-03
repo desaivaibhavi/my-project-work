@@ -18,16 +18,6 @@ urlpatterns = patterns('',
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^edit_profile/$', views.edit_profile, name='edit_profile'),
     url(r'^edit_profile_page/$', views.edit_profile_page, name='edit_profile_page'),
-
-    
-    
-
-
-#    url(r'^accounts/login/$', views.login, name='login'),
-#    url(r'^accounts/auth/$', views.auth_view, name='views.auth_view'),
-#    url(r'^accounts/logout/$',views.logout, name='views.logout'),
-#    url(r'^accounts/loggedin/$',views.loggedin, name='views.loggedin'),
-#    url(r'^accounts/invalid/$', views.invalid_login, name='views.invalid_login'),
 )
 
 

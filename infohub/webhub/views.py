@@ -63,10 +63,12 @@ def logout_do(request):
     return HttpResponse(jinja_environ.get_template('redirect.html').render({"pcuser":None,"redirect_url":redirect_url}))
 
 
+#Called when a user goes to malaria track.
 def malaria(request):
     all_posts = Post.objects.all()
     return HttpResponse(jinja_environ.get_template('malaria.html').render({"all_posts":all_posts}))
 
+#called when a user wants to view a particular post.
 def view_post(request):
     retval = check(request)
     if retval <> None:
@@ -122,7 +124,7 @@ def edit_post_page(request):
     except Exception as e:
         return HttpResponse(e)
     
-#Called when a user edits his/her post. If there already are reservers, the user gets a negative flag.
+#Called when a user edits his/her post.
 @csrf_exempt
 def edit_post(request):
     retval = check(request)
@@ -150,7 +152,7 @@ def edit_post(request):
     return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
                                                                           "text":'Post edited successfully.',"text1":'Click here to view post.', "link": '/view_post/?key=' + str(postobj.id)}))
 
-#Called when a user cancels his post. Here all the reserved users are sent a notification and the owner gets a negative flag if there are confirmed users on that post.
+#Called when a user cancels his post. 
 @csrf_exempt
 def delete_post(request):
     retval = check(request)
@@ -213,6 +215,6 @@ def edit_profile(request):
     return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
                                                                           "text":'Profile edit successful.',"text1":'Click here to view the profile.',"link":'/profile/?id='+ str(request.user.pcuser.id)}))
 
-    
+#called when user wishes to go to the Peacetrack from dashboard
 def peacetrack(request):
     return HttpResponse(jinja_environ.get_template('peacetrack.html').render({"pcuser":None}))
