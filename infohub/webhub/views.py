@@ -51,7 +51,7 @@ def login_do(request):
                 return HttpResponse("inv_user")
             return HttpResponse("inv_pass")
         return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":None,
-                                                                              "text":'Invalid Login. Please go back or click OK to go to the homepage',"link":'/'}))
+                                                                              "text":'Invalid Login.', "text1":'Click here to go to home page.',"link":'/'}))
     
     
 #Called when a user clicks logout button.
@@ -148,7 +148,7 @@ def edit_post(request):
     
     postobj.owner.save()
     return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
-                                                                          "text":'Post edited successfully. Click OK to view the post.', "link": '/post_page/?key=' + str(postobj.id)}))
+                                                                          "text":'Post edited successfully.',"text1":'Click here to view post.', "link": '/view_post/?key=' + str(postobj.id)}))
 
 #Called when a user cancels his post. Here all the reserved users are sent a notification and the owner gets a negative flag if there are confirmed users on that post.
 @csrf_exempt
@@ -169,7 +169,7 @@ def delete_post(request):
     postobj.delete()
 
     return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
-                                                                          "text":'Post Deleted successfully. Please go back or click OK to go to the homepage',"link":'/'}))
+                                                                          "text":'Post Deleted successfully.', "text1":'Click here to go to home page.',"link":'/'}))
 
 #Call to open user's profile page.Sends data to be displayed.        
 def profile(request):
@@ -211,7 +211,7 @@ def edit_profile(request):
     request.user.save()
     
     return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
-                                                                          "text":'Profile edit successful. Please go back or click OK to go to the homepage',"link":'/'}))
+                                                                          "text":'Profile edit successful.',"text1":'Click here to view the profile.',"link":'/profile/?id='+ str(request.user.pcuser.id)}))
 
     
 def peacetrack(request):
