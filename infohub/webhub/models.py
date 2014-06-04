@@ -1,3 +1,8 @@
+#Version : Phython/Django 2.7.6, PostgreSQL 9.3.4
+#Author : Vaibhavi Desai
+#Github username : desaivaibhavi
+#email : ranihaileydesai@gmail.com
+
 from django.db import models
 from django import forms
 from django.utils import timezone
@@ -9,7 +14,7 @@ from uuid import uuid4
 
 class Pcuser(models.Model):
     #username
-    username = models.OneToOneField(User)
+    user = models.OneToOneField(User)
     #location
     location = models.CharField(max_length=300)
     #phone number

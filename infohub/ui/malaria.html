@@ -1,3 +1,12 @@
+<!-- 
+Version : Phython/Django 2.7.6, PostgreSQL 9.3.4
+Author : Vaibhavi Desai
+Github username : desaivaibhavi
+email : ranihaileydesai@gmail.com
+-->
+
+
+
 <!-- page showing information about posts on Malaria -->
 <html>
 <head>
@@ -10,6 +19,11 @@
     <div style="width:600px; height:auto; margin:0 auto; background-color:#0d8b97; padding-right:15px; padding-left:15px;">
     <br><br>
     <button type="button" class="btn" onclick="window.location.href='/post_form/'" style="float:right;">New Post</button>
+    
+
+    {%if all_posts|length ==0 %}
+        <center><font color="white"><h4>There are No Posts right now.</h4></font><br><br><br><br><br><br><br><br><br><br></center>
+    {% else %}
         
     <table class="table">
         <thead>
@@ -20,6 +34,7 @@
         </thead>
         
         <tbody>
+            
             {% for post in all_posts %}
             <tr>
             <td><a href="/view_post/?key={{post.id}}"><font color="white">{{post.title_post}}</font></a></td>
@@ -31,6 +46,7 @@
         </tbody>
         
     </table>
+    {% endif %}
     
     
     </div>

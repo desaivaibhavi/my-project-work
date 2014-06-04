@@ -1,3 +1,8 @@
+#Version : Phython/Django 2.7.6, PostgreSQL 9.3.4
+#Author : Vaibhavi Desai
+#Github username : desaivaibhavi
+#email : ranihaileydesai@gmail.com
+
 #!/usr/bin/env python
 import os
 import sys
