@@ -26,6 +26,6 @@ def check(request):
         request.user.pcuser
     except:
         return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":None,
-                                                                              "text":'<p>No Pcuser associated!.</p><p>Please go back or click OK to log out.</p>',"link":'/logout_do/'}))
+                                                                              "text":'<p>No Pcuser associated! Add a pcuser from admin</p>'}))
     
     return None 

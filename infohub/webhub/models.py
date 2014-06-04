@@ -9,13 +9,9 @@ from uuid import uuid4
 
 class Pcuser(models.Model):
     #username
-    user = models.OneToOneField(User)
+    username = models.OneToOneField(User)
     #location
     location = models.CharField(max_length=300)
-    #first_name
-    first_name = models.CharField(max_length=300)
-    #last_name
-    last_name = models.CharField(max_length=400)
     #phone number
     phone = models.CharField(max_length=150)
     #gender

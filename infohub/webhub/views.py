@@ -41,7 +41,7 @@ def login_do(request):
         if user.is_active:
             login(request, user)
             if 'redirect' in request.REQUEST.keys():
-                return HttpResponse(jinja_environ.get_template('redirect.html').render({"rider":None,"redirect_url":request.REQUEST['redirect'].replace("!!__!!","&")}))
+                return HttpResponse(jinja_environ.get_template('redirect.html').render({"pcuser":None,"redirect_url":request.REQUEST['redirect'].replace("!!__!!","&")}))
             return HttpResponse(jinja_environ.get_template('redirect.html').render({"pcuser":None,"redirect_url":"/"}))
             
     else:
@@ -66,7 +66,7 @@ def logout_do(request):
 #Called when a user goes to malaria track.
 def malaria(request):
     all_posts = Post.objects.all()
-    return HttpResponse(jinja_environ.get_template('malaria.html').render({"all_posts":all_posts}))
+    return HttpResponse(jinja_environ.get_template('malaria.html').render({"all_posts":all_posts, "pcuser":request.user.pcuser}))
 
 #called when a user wants to view a particular post.
 def view_post(request):
@@ -107,7 +107,7 @@ def post_new(request):
                  )
     entry.save()
     return HttpResponse(jinja_environ.get_template('notice.html').render({"pcuser":request.user.pcuser,
-                                                                          "text":'<p>Post successful. </p>Please go back or click OK to go to the homepage',
+                                                                          "text":'Post successful.',"text1":'Click here to go to home.',
                                                                           "link": '/'}))
 
 #Calls the edit post page. Also, sends the autofill form data.    
@@ -204,6 +204,7 @@ def edit_profile(request):
     
     request.user.pcuser.gender = request.REQUEST['gender']
     request.user.pcuser.phone = request.REQUEST['phone']
+    request.user.pcuser.phone = request.REQUEST['email']
     request.user.pcuser.gender = request.REQUEST['location']
     request.user.first_name = request.REQUEST['first_name']
     request.user.last_name = request.REQUEST['last_name']
@@ -217,4 +218,4 @@ def edit_profile(request):
 
 #called when user wishes to go to the Peacetrack from dashboard
 def peacetrack(request):
-    return HttpResponse(jinja_environ.get_template('peacetrack.html').render({"pcuser":None}))
+    return HttpResponse(jinja_environ.get_template('peacetrack.html').render({"pcuser":None}))  
